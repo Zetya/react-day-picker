@@ -67,7 +67,6 @@
 }
 
 .DayPicker-Caption {
-  display: table-caption;
   margin-bottom: 0.5em;
   padding: 0 0.5em;
   text-align: left;
@@ -79,7 +78,6 @@
 }
 
 .DayPicker-Weekdays {
-  display: table-header-group;
   margin-top: 1em;
 }
 
@@ -97,10 +95,6 @@
   text-decoration: none;
 }
 
-.DayPicker-Body {
-  display: table-row-group;
-}
-
 .DayPicker-Week, .DayPicker-ExtensionGroup {
 	 display: flex;
 }
@@ -111,7 +105,10 @@
 
 .DayPicker-Day, .DayPicker-WeekNumber, .DayPicker-Weekday{
 	 box-sizing: border-box;
-	 width: 2.5em;
+}
+
+.DayPicker-Month, .DayPicker-Day, .DayPicker-WeekNumber, .DayPicker-Weekday{
+	 width: 100%;
 }
 
 .DayPicker-Day {
@@ -122,9 +119,9 @@
 }
 
 .DayPicker-WeekNumber {
-	 display: flex;
-	 vertical-align: middle;
-	 align-items: center;
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
   min-width: 1em;
   border-right: 1px solid #EAECEC;
   color: #8B9898;
