@@ -186,10 +186,13 @@ export default class Month extends Component {
             if (showWeekNumbers) {
               weekNumber = DateUtils.getWeekNumber(week[6]);
             }
-            const showExtension = DateUtils.isDayInRange(modifiers.selected, {
-              from: week[0],
-              to: week[6],
-            });
+            const showExtension =
+              children &&
+              modifiers.selected &&
+              DateUtils.isDayInRange(modifiers.selected, {
+                from: week[0],
+                to: week[6],
+              });
 
             return (
               <div key={week[0].getTime()} role="rowgroup">
@@ -217,21 +220,16 @@ export default class Month extends Component {
                   )}
                   {week.map(this.renderDay)}
                 </div>
-                {children &&
-                  modifiers.selected &&
-                  showExtension && (
-                    <div className={classNames.extensionGroup} role="row">
-                      {showWeekNumbers && (
-                        <div
-                          className={classNames.weekNumber}
-                          role="gridcell"
-                        />
-                      )}
-                      <div className={classNames.extension} role="gridcell">
-                        {children}
-                      </div>
+                {showExtension && (
+                  <div className={classNames.extensionGroup} role="row">
+                    {showWeekNumbers && (
+                      <div className={classNames.weekNumber} role="gridcell" />
+                    )}
+                    <div className={classNames.extension} role="gridcell">
+                      {children}
                     </div>
-                  )}
+                  </div>
+                )}
               </div>
             );
           })}
