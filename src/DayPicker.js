@@ -520,7 +520,9 @@ export class DayPicker extends Component {
           firstDayOfWeek={firstDayOfWeek}
           onDayKeyDown={this.handleDayKeyDown}
           onDayClick={this.handleDayClick}
-        />
+        >
+          {this.props.children}
+        </Month>
       );
     }
 

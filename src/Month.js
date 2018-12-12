@@ -62,6 +62,9 @@ export default class Month extends Component {
     onDayTouchEnd: PropTypes.func,
     onDayTouchStart: PropTypes.func,
     onWeekClick: PropTypes.func,
+
+    modifiers: PropTypes.object,
+    children: PropTypes.func,
   };
 
   renderDay = day => {
@@ -144,6 +147,9 @@ export default class Month extends Component {
       showWeekNumbers,
       showWeekDays,
       onWeekClick,
+
+      modifiers,
+      children,
     } = this.props;
 
     const captionProps = {
@@ -180,34 +186,52 @@ export default class Month extends Component {
             if (showWeekNumbers) {
               weekNumber = DateUtils.getWeekNumber(week[6]);
             }
+            const showExtension = DateUtils.isDayInRange(modifiers.selected, {
+              from: week[0],
+              to: week[6],
+            });
+
             return (
-              <div
-                key={week[0].getTime()}
-                className={classNames.week}
-                role="row"
-              >
-                {showWeekNumbers && (
-                  <div
-                    className={classNames.weekNumber}
-                    tabIndex={0}
-                    role="gridcell"
-                    onClick={
-                      onWeekClick
-                        ? e => onWeekClick(weekNumber, week, e)
-                        : undefined
-                    }
-                    onKeyUp={
-                      onWeekClick
-                        ? e =>
-                            e.keyCode === ENTER &&
-                            onWeekClick(weekNumber, week, e)
-                        : undefined
-                    }
-                  >
-                    {this.props.renderWeek(weekNumber, week, month)}
-                  </div>
-                )}
-                {week.map(this.renderDay)}
+              <div key={week[0].getTime()} role="rowgroup">
+                <div className={classNames.week} role="row">
+                  {showWeekNumbers && (
+                    <div
+                      className={classNames.weekNumber}
+                      tabIndex={0}
+                      role="gridcell"
+                      onClick={
+                        onWeekClick
+                          ? e => onWeekClick(weekNumber, week, e)
+                          : undefined
+                      }
+                      onKeyUp={
+                        onWeekClick
+                          ? e =>
+                              e.keyCode === ENTER &&
+                              onWeekClick(weekNumber, week, e)
+                          : undefined
+                      }
+                    >
+                      {this.props.renderWeek(weekNumber, week, month)}
+                    </div>
+                  )}
+                  {week.map(this.renderDay)}
+                </div>
+                {children &&
+                  modifiers.selected &&
+                  showExtension && (
+                    <div className={classNames.extensionGroup} role="row">
+                      {showWeekNumbers && (
+                        <div
+                          className={classNames.weekNumber}
+                          role="gridcell"
+                        />
+                      )}
+                      <div className={classNames.extension} role="gridcell">
+                        {children}
+                      </div>
+                    </div>
+                  )}
               </div>
             );
           })}

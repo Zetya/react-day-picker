@@ -28,4 +28,7 @@ export default {
   selected: 'selected',
   disabled: 'disabled',
   outside: 'outside',
+
+  extensionGroup: 'DayPicker-ExtensionGroup',
+  extension: 'DayPicker-Extension',
 };
