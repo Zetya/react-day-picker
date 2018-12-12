@@ -312,7 +312,7 @@ describe('DayPicker’s events handlers', () => {
     );
     wrapper
       .find('.DayPicker-WeekNumber')
-      .at(1)
+      .at(2)
       .simulate('click');
     expect(handleWeekClick.mock.calls[0][0]).toBe(7);
     expect(handleWeekClick.mock.calls[0][1]).toHaveLength(7);

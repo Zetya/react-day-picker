@@ -226,7 +226,7 @@ describe('DayPicker’s methods', () => {
     });
 
     function getDayNode(monthBody, weekIndex, dayIndex) {
-      return monthBody.childNodes[weekIndex].childNodes[dayIndex];
+      return monthBody.childNodes[weekIndex].childNodes[0].childNodes[dayIndex];
     }
 
     describe('focusPreviousDay()', () => {
