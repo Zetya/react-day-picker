@@ -27,7 +27,6 @@
 }
 
 .DayPicker-Month {
-  display: table;
   margin: 0 1em;
   margin-top: 1em;
   border-spacing: 0;
@@ -80,7 +79,6 @@
 }
 
 .DayPicker-Caption {
-  display: table-caption;
   margin-bottom: 0.5em;
   padding: 0 0.5em;
   text-align: left;
@@ -92,20 +90,16 @@
 }
 
 .DayPicker-Weekdays {
-  display: table-header-group;
   margin-top: 1em;
 }
 
 .DayPicker-WeekdaysRow {
-  display: table-row;
+	 display: flex;
 }
 
 .DayPicker-Weekday {
-  display: table-cell;
-  padding: 0.5em;
   color: #8B9898;
   text-align: center;
-  font-size: 0.875em;
 }
 
 .DayPicker-Weekday abbr[title] {
@@ -113,31 +107,36 @@
   text-decoration: none;
 }
 
-.DayPicker-Body {
-  display: table-row-group;
+.DayPicker-Week, .DayPicker-ExtensionGroup {
+	 display: flex;
 }
 
-.DayPicker-Week {
-  display: table-row;
+.DayPicker-Day, .DayPicker-WeekNumber, .DayPicker-Weekday{
+	 padding: 0.5em;
+}
+
+.DayPicker-Day, .DayPicker-WeekNumber, .DayPicker-Weekday{
+	 box-sizing: border-box;
+}
+
+.DayPicker-Month, .DayPicker-Day, .DayPicker-WeekNumber, .DayPicker-Weekday{
+	 width: 100%;
 }
 
 .DayPicker-Day {
-  display: table-cell;
-  padding: 0.5em;
-  border-radius: 50%;
+  border-radius: 5px;
   vertical-align: middle;
   text-align: center;
   cursor: pointer;
 }
 
 .DayPicker-WeekNumber {
-  display: table-cell;
-  padding: 0.5em;
+  display: flex;
+  vertical-align: middle;
+  align-items: center;
   min-width: 1em;
   border-right: 1px solid #EAECEC;
   color: #8B9898;
-  vertical-align: middle;
-  text-align: right;
   font-size: 0.75em;
   cursor: pointer;
 }
